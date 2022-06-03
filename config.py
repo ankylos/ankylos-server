@@ -13,7 +13,12 @@ class Config(object):
         )
 
 class DevelopmentConfig(Config):
-    pass
+    DB_SCHEMA = 'sqlite'
+    DB_USER = '/' # for sqlite in memory
+    DB_PASSWORD = ''
+    DB_HOST = ''
+    DB_PORT = ''
+    DB_NAME = ''
 
 class ProductionConfig(Config):
     TESTING = False

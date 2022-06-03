@@ -10,7 +10,3 @@ def create_app(config: object):
 
     return app
 
-if __name__ == '__main__':
-    from config import TestingConfig
-    app = create_app(TestingConfig)
-    app.run()
