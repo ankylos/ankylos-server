@@ -1,8 +1,8 @@
 from flask import Flask
 
-def create_app(config_filename):
+def create_app(config: object):
     app = Flask(__name__)
-    app.config.from_pyfile(config_filename)
+    app.config.from_object(config)
 
     from web.views.frontend import frontend
 
@@ -11,5 +11,6 @@ def create_app(config_filename):
     return app
 
 if __name__ == '__main__':
-    app = create_app()
+    from config import TestingConfig
+    app = create_app(TestingConfig)
     app.run()

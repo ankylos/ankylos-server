@@ -4,4 +4,4 @@ frontend = Blueprint('frontend', __name__, url_prefix='/')
 
 @frontend.route('/')
 def index():
-    return render_template(current_app.config['INDEX_TEMPLATE'])
+    return render_template('templates/index.html')
