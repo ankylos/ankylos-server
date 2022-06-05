@@ -53,7 +53,7 @@ def test_frontend_search_page_spongebob(client):
     """
     response = client.get("/search", params={"term": "spongebob"})
 
-    assert response.status == '200 OK'
+    assert response.status == "200 OK"
 
     # Check search results aren't empty
-    assert soup.select('.search-result') is not None
+    assert soup.select(".search-result") is not None
