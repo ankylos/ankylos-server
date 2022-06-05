@@ -7,3 +7,8 @@ def app():
     from config import TestingConfig
     app = create_app(TestingConfig)
     return app
+
+@pytest.fixture
+def client(app):
+    with app.test_client() as client:
+        yield client
