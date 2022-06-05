@@ -1,4 +1,4 @@
-from flask import (request, Blueprint, current_app, render_template, url_for, redirect)
+from flask import (request, Blueprint, render_template, url_for, redirect)
 
 frontend = Blueprint("frontend", __name__, url_prefix="/")
 
