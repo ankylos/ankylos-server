@@ -1,5 +1,11 @@
 class Config(object):
     TESTING = True
+    DB_SCHEMA = ''
+    DB_USER = ''
+    DB_PASSWORD = ''
+    DB_HOST = ''
+    DB_PORT = ''
+    DB_NAME = ''
 
     @property
     def DATABASE_URI(self):
@@ -15,10 +21,6 @@ class Config(object):
 class DevelopmentConfig(Config):
     DB_SCHEMA = 'sqlite'
     DB_USER = '/' # for sqlite in memory
-    DB_PASSWORD = ''
-    DB_HOST = ''
-    DB_PORT = ''
-    DB_NAME = ''
 
 class ProductionConfig(Config):
     TESTING = False
@@ -26,7 +28,3 @@ class ProductionConfig(Config):
 class TestingConfig(Config):
     DB_SCHEMA = 'sqlite'
     DB_USER = '/' # for sqlite in memory
-    DB_PASSWORD = ''
-    DB_HOST = ''
-    DB_PORT = ''
-    DB_NAME = ''
