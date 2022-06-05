@@ -51,9 +51,10 @@ def test_frontend_search_page_spongebob(client):
         - returning search results
         - correct search results with given search term
     """
-    response = client.get("/search", params={"term": "spongebob"})
+    response = client.get("/search", term='spongebob')
 
     assert response.status == "200 OK"
 
+    soup = BeautifulSoup(response.text, 'html.parser')
     # Check search results aren't empty
     assert soup.select(".search-result") is not None
