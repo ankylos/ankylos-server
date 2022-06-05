@@ -36,8 +36,9 @@ def test_frontend_search_page_get_method(client):
     """
     response = client.get("/search")
 
-    assert response.status == "200 OK"
+    assert response.status == "302 FOUND"
 
+    soup = BeautifulSoup(response.text, 'html.parser')
     # Check for basic html element
     assert soup.find("html") is not None
 
@@ -51,7 +52,7 @@ def test_frontend_search_page_spongebob(client):
         - returning search results
         - correct search results with given search term
     """
-    response = client.get("/search", term='spongebob')
+    response = client.get('/search?q=spongebob')
 
     assert response.status == "200 OK"
 
