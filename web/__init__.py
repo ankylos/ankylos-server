@@ -1,11 +1,13 @@
-from flask import Flask
+from flask import Flask, app
 
 
-def create_app(config: object):
+def create_app(config: object) -> app.Flask:
     app = Flask(__name__)
     app.config.from_object(config)
 
+    # associate db object with flask app
     from web.models import db
+    db.init_app(app)
     with app.app_context():
         db.create_all()
 
