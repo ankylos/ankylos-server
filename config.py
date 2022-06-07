@@ -8,7 +8,7 @@ class Config(object):
     DB_NAME = ''
 
     @property
-    def DATABASE_URI(self):
+    def SQLALCHEMY_DATABASE_URI(self):
         return "{}://{}:{}@{}:{}/{}".format(
             self.DB_SCHEMA,
             self.DB_USER,
