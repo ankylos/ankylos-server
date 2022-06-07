@@ -1,7 +1,8 @@
 from loguru import logger
+from flask.testing import FlaskClient
 
 
-def test_app_is_listening(client):
+def test_app_is_listening(client: FlaskClient):
     try:
         response = client.get("/")
     except Exception as exc:
