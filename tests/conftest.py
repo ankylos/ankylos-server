@@ -7,8 +7,10 @@ from flask.app import Flask
 @pytest.fixture
 def app() -> Flask:
     from config import TestingConfig
-    app = create_app(TestingConfig)
+
+    app = create_app(TestingConfig())
     return app
+
 
 @pytest.fixture
 def client(app) -> FlaskClient:
