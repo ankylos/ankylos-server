@@ -1,30 +1,30 @@
+import os
+
+
 class Config(object):
     TESTING = True
-    DB_SCHEMA = ''
-    DB_USER = ''
-    DB_PASSWORD = ''
-    DB_HOST = ''
-    DB_PORT = ''
-    DB_NAME = ''
+    BASE_PATH = os.path.abspath(os.path.dirname(__file__))
+
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     @property
     def SQLALCHEMY_DATABASE_URI(self):
-        return "{}://{}:{}@{}:{}/{}".format(
-            self.DB_SCHEMA,
-            self.DB_USER,
-            self.DB_PASSWORD,
-            self.DB_HOST,
-            self.DB_PORT,
-            self.DB_NAME
-        )
+        return self._database_uri
+
 
 class DevelopmentConfig(Config):
-    DB_SCHEMA = 'sqlite'
-    DB_USER = '/' # for sqlite in memory
+    def __init__(self):
+        self._database_uri = "sqlite:///{}".format(
+            os.path.join(self.BASE_PATH, "dev.sqlite")
+        )
+
 
 class ProductionConfig(Config):
     TESTING = False
 
+
 class TestingConfig(Config):
-    DB_SCHEMA = 'sqlite'
-    DB_USER = '/' # for sqlite in memory
+    def __init__(self):
+        self._database_uri = "sqlite:///{}".format(
+            os.path.join(self.BASE_PATH, "test.sqlite")
+        )
