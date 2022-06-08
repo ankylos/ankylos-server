@@ -1,15 +1,13 @@
 from flask import Flask, app
+from web.database import init_engine, init_db
 
 
 def create_app(config: object) -> app.Flask:
     app = Flask(__name__)
     app.config.from_object(config)
 
-    # associate db object with flask app
-    from web.models import db
-    db.init_app(app)
-    with app.app_context():
-        db.create_all()
+    init_engine(app.config['SQLALCHEMY_DATABASE_URI'])
+    init_db()
 
     from web.views.frontend import frontend
 
