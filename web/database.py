@@ -13,4 +13,4 @@ def init_engine(uri, **kwargs):
 
 def init_db():
     from web.models.Pages import Pages
-    Base.metadata.create_all(bind=engine)
+    Base.metadata.create_all(engine)
