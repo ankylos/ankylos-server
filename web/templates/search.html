@@ -21,7 +21,7 @@
 
     <!-- Search Bar -->
     <div class="container">
-      <form class="d-flex" role="search">
+      <form action='/search' method='get' class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -29,14 +29,15 @@
 
     <!-- Search Results -->
     <div class='container'>
+      {% if test %}
       <ul>
+        {% for i in test %}
         <li class="search-result">
-          Result 1 
+          Result {{ i }} 
         </li>
-        <li class="search-result">
-          Result 2 
-        </li>
+        {% endfor %}
       </ul>
+      {% endif %}
     </div>
   </body>
 </html>
