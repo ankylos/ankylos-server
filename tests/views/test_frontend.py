@@ -2,6 +2,7 @@ from loguru import logger
 from bs4 import BeautifulSoup
 from flask import url_for
 from flask.testing import FlaskClient
+from web.models.pages import Pages
 
 
 def test_frontend_index_page_get_method(client: FlaskClient) -> None:
