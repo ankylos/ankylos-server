@@ -29,11 +29,11 @@
 
     <!-- Search Results -->
     <div class='container'>
-      {% if test %}
+      {% if q_results %}
       <ul>
-        {% for i in test %}
+        {% for page in q_results %}
         <li class="search-result">
-          Result {{ i }} 
+          <p>Result {{ loop.index }}:{{ page.name }}</p>
         </li>
         {% endfor %}
       </ul>
