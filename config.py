@@ -25,6 +25,4 @@ class ProductionConfig(Config):
 
 class TestingConfig(Config):
     def __init__(self):
-        self._database_uri = "sqlite:///{}".format(
-            os.path.join(self.BASE_PATH, "test.sqlite")
-        )
+        self._database_uri = "sqlite://"

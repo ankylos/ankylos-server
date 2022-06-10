@@ -1,6 +1,6 @@
 from sqlalchemy import select
 from flask import request, Blueprint, render_template, url_for, redirect
-from web.models.Pages import Pages
+from web.models.pages import Pages
 from web.database import db_session
 
 frontend = Blueprint("frontend", __name__, url_prefix="/")

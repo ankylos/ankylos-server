@@ -64,7 +64,8 @@ def test_frontend_search_page_get_method(client: FlaskClient) -> None:
     assert soup.find("html") is not None
 
 
-def test_frontend_search_page_spongebob(client: FlaskClient) -> None:
+def test_frontend_search_page_spongebob(client: FlaskClient,
+                                        setup_spongebob_pages: int) -> None:
     """
     Test for search term response with frontend search page
 
@@ -73,16 +74,18 @@ def test_frontend_search_page_spongebob(client: FlaskClient) -> None:
         - returning search results
         - correct search results with given search term
     """
+    num_of_inserted_pages = setup_spongebob_pages
     response = client.get(url_for("frontend.search", q="spongebob"))
 
     assert response.status == "200 OK"
 
     soup = BeautifulSoup(response.text, "html.parser")
     # Check search results aren't empty
-    assert len(soup.select(".search-result")) > 0
+    assert len(soup.select(".search-result")) == num_of_inserted_pages
 
 
-def test_frontend_search_page_no_results(client: FlaskClient) -> None:
+def test_frontend_search_page_no_results(client: FlaskClient,
+                                         setup_spongebob_pages) -> None:
     """
     Test for search page with no results
 
