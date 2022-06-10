@@ -84,8 +84,7 @@ def test_frontend_search_page_spongebob(client: FlaskClient,
     assert len(soup.select(".search-result")) == num_of_inserted_pages
 
 
-def test_frontend_search_page_no_results(client: FlaskClient,
-                                         setup_spongebob_pages) -> None:
+def test_frontend_search_page_no_results(client: FlaskClient) -> None:
     """
     Test for search page with no results
 
