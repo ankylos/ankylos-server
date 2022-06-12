@@ -13,12 +13,11 @@ def index():
 
 @frontend.route("/search", methods=["get"])
 def search():
-    args = request.args
+    search_term = request.args.get('q', default='', type=str)
 
-    if not args.get("q", default="", type=str):
+    if not search_term:
         return redirect(url_for("frontend.index"))
 
-    search_term = args.get("q")
     # Handle get search term
     # stmt = select(Pages).where(Pages.name == args.get("q"))
     # results = db_session.execute(stmt)
