@@ -9,6 +9,7 @@ flask = "*"
 pytest-flask = "*"
 loguru = "*"
 bs4 = "*"
+sqlalchemy = "*"
 
 [dev-packages]
 
