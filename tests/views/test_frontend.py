@@ -2,7 +2,6 @@ from loguru import logger
 from bs4 import BeautifulSoup
 from flask import url_for
 from flask.testing import FlaskClient
-from web.models.pages import Pages
 
 
 def test_frontend_index_page_get_method(client: FlaskClient) -> None:
@@ -98,3 +97,26 @@ def test_frontend_search_page_no_results(client: FlaskClient) -> None:
 
     soup = BeautifulSoup(response.text, "html.parser")
     assert len(soup.select(".search-result")) == 0
+
+def test_frontend_search_page_returns_search_page(client: FlaskClient) -> None:
+    """
+    Test for search page search button returns search page
+
+    Testing for:
+        - get method with params
+        - check whether form is method get
+        - check whether form is sending to search url
+        - check whether input name is q
+    """
+    response = client.get(url_for('frontend.search', q='spongebob'))
+
+    assert response.status == '200 OK'
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    # Checkt whether search page form returns correct urls
+    form_el = soup.find('form')
+    assert form_el.attrs.get('action') == url_for('frontend.search')
+    assert form_el.attrs.get('method') == 'get'
+
+    input_el = soup.find('form').find('input')
+    assert input_el.attrs.get('name') == 'q'
