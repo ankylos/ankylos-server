@@ -19,3 +19,8 @@ Testing is done with pytest
 - Main Database is in postgres
 - Dev Database is in postgres
 - Test is in sqlite
+
+
+# Config
+
+Config file used here is only for template and testing purposes.
